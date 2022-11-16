@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ZYZKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ZYZKit.'
+  s.summary          = 'ZYZKit'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,49 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+TODO: ZYZKit Common tool
                        DESC
 
-  s.homepage         = 'https://github.com/wz/ZYZKit'
+  s.homepage         = 'https://github.com/githubdelegate/ZYZKit.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'wz' => 'wangweiappleid@sohu.com' }
-  s.source           = { :git => 'https://github.com/wz/ZYZKit.git', :tag => s.version.to_s }
+  s.author           = { 'wz' => 'ostmail@163.com' }
+  s.source           = { :git => 'https://github.com/githubdelegate/ZYZKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '10.0'
+  
+  s.platform = :ios
+  s.ios.deployment_target = '14.0'
+  
+  s.swift_version = '5.0'
 
   s.source_files = 'ZYZKit/Classes/**/*'
+  
+  s.subspec 'Common' do |spc|
+      spc.ios.deployment_target = '14.0'
+      
+      spc.source_files = 'ZYZKit/Classes/Common/**/*'
+      spc.dependency 'AFNetworking', '~> 2.3'
+      spc.dependency 'MBProgressHUD', '~> 1.2.0'
+  end
+  
+  
+  
+  s.subspec 'PDF' do |sp|
+    sp.ios.deployment_target = '14.0'
+    
+    sp.source_files = 'ZYZKit/Classes/PDF/**/*'
+    sp.dependency  'Zip', '~> 2.1'
+    sp.dependency  'ZYZKit/Common'
+    sp.frameworks = 'PDFKit'
+  end
+
+ 
   
   # s.resource_bundles = {
   #   'ZYZKit' => ['ZYZKit/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.frameworks = 'UIKit', 'Foundation'
+   
 end

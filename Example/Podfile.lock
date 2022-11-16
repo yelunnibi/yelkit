@@ -1,0 +1,56 @@
+PODS:
+  - AFNetworking (2.7.0):
+    - AFNetworking/NSURLConnection (= 2.7.0)
+    - AFNetworking/NSURLSession (= 2.7.0)
+    - AFNetworking/Reachability (= 2.7.0)
+    - AFNetworking/Security (= 2.7.0)
+    - AFNetworking/Serialization (= 2.7.0)
+    - AFNetworking/UIKit (= 2.7.0)
+  - AFNetworking/NSURLConnection (2.7.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.7.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.7.0)
+  - AFNetworking/Security (2.7.0)
+  - AFNetworking/Serialization (2.7.0)
+  - AFNetworking/UIKit (2.7.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - MBProgressHUD (1.2.0)
+  - Zip (2.1.2)
+  - ZYZKit (0.1.0):
+    - ZYZKit/Common (= 0.1.0)
+    - ZYZKit/PDF (= 0.1.0)
+  - ZYZKit/Common (0.1.0):
+    - AFNetworking (~> 2.3)
+    - MBProgressHUD (~> 1.2.0)
+  - ZYZKit/PDF (0.1.0):
+    - Zip (~> 2.1)
+    - ZYZKit/Common
+
+DEPENDENCIES:
+  - ZYZKit (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - MBProgressHUD
+    - Zip
+
+EXTERNAL SOURCES:
+  ZYZKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: 8dd5f9b9691e09186393069a12cc3b5ed7c8b511
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
+  ZYZKit: a2788a73db307b9219ac1adb8c7b147acf36ce0d
+
+PODFILE CHECKSUM: d58e4067474a762a9df02e554c265630c767405e
+
+COCOAPODS: 1.11.3
