@@ -11,7 +11,7 @@ import UIKit
 let kRotatingTag = 10223
 
 
-extension UIImageView {
+public extension UIImageView {
     /// 添加蒙层
     /// - Parameter targetImageView: targetImageView description
     func makeBlurImage(targetImageView:UIImageView?){
@@ -24,7 +24,7 @@ extension UIImageView {
     }
 }
 
-extension UIImageView {
+public extension UIImageView {
     /// 获取imageview 里面 aspectfit  image 的实际 frame
     var imageRealRect: CGRect {
         let off =  CGSize.aspectFit(image: self.image!.size, boundingSize: self.bounds.size)
@@ -33,7 +33,7 @@ extension UIImageView {
     }
 }
 
-extension UIImage {
+public extension UIImage {
     func rotate(orientation: UIImage.Orientation) -> UIImage {
         guard let imagRef = self.cgImage else {
             print(" no cgimage ")
@@ -104,7 +104,7 @@ extension UIImage {
 
 
 
-extension CGSize {
+public extension CGSize {
     /// 根据imageview 的大小 和image的大小 计算出 aspectfit 下 图片实际大小
     /// - Parameters:
     ///   - aspectRatio: aspectRatio description
@@ -131,7 +131,7 @@ extension CGSize {
     }
 }
 
-extension CGPoint {
+public extension CGPoint {
     func cartesian(for size: CGSize) -> CGPoint {
         let realPoint = self.applying(CGAffineTransform(scaleX: size.width, y: size.height))
         return CGPoint(x: realPoint.x, y: size.height - realPoint.y)
@@ -248,7 +248,7 @@ extension CGPoint {
 
 
 
-extension UIImage {
+public extension UIImage {
     /// 四个点  是  左上角维坐标系 的坐标点  顺时针方向, 四个左边点 使用比例值
     func clipImageWithPoint(topLeft: CGPoint, topRight: CGPoint, bottomRight: CGPoint, bottomLeft: CGPoint) -> UIImage? {
         let ciImage = CIImage(image: self)
@@ -275,7 +275,7 @@ extension UIImage {
 }
 
 
-extension UIImageView {
+public extension UIImageView {
     /// 获取imageview 里面 aspectfit  image 的实际 frame
     var aspectFitImageRealRect: CGRect {
         let off =  CGSize.aspectFit(aspectRatio: self.image!.size, boundingSize: self.bounds.size)
@@ -292,7 +292,7 @@ extension UIImageView {
 
 
 // 旋转
-extension UIImageView {
+public extension UIImageView {
     var isRotating: Bool {
         guard self.superview != nil else {  return  false }
         for view in self.superview!.subviews {
@@ -352,7 +352,7 @@ extension UIImageView {
     }
 }
 
-extension UIImageView {
+public extension UIImageView {
     @discardableResult
     func img(name: String) -> UIImageView {
         self.image = UIImage(named: name)

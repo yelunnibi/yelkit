@@ -109,7 +109,7 @@ public extension UIView {
 }
 
 
-extension UIView {
+public extension UIView {
     func addRotate() {
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.toValue = NSNumber(value: Double.pi * 2)
@@ -145,7 +145,7 @@ extension UIView {
 }
 
 
-enum Border: Int {
+public enum Border: Int {
     case top = 0
     case bottom
     case right
@@ -165,7 +165,7 @@ enum Border: Int {
     }
 }
 
-extension UIView {
+public extension UIView {
     @discardableResult
     func addBorder(for side: Border, withColor color: UIColor, borderWidth: CGFloat) -> CALayer {
         var borderLayer: CALayer!
@@ -195,7 +195,7 @@ extension UIView {
     }
 }
 
-extension CALayer {
+public extension CALayer {
     func updateBorderLayer(for side: Border, withViewFrame viewFrame: CGRect) {
         let xOrigin: CGFloat = (side == .right ? viewFrame.width - frame.width : 0)
         let yOrigin: CGFloat = (side == .bottom ? viewFrame.height - frame.height : 0)
@@ -207,7 +207,7 @@ extension CALayer {
     }
 }
 
-extension UIView {
+public extension UIView {
     func roundCorners(radius: CGFloat = 10, corners: UIRectCorner = .allCorners) {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
@@ -259,7 +259,7 @@ extension UIView {
 
 
 public typealias TapGesAction = (UIView)->()
-extension UIView {
+public extension UIView {
     private struct AssociatedKeys{
        static var tapActionKey = "tapActionKey"
     }
