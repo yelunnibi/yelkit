@@ -9,6 +9,61 @@
 import Foundation
 import UIKit
 
+/// pinyin 拼音
+public extension String {
+    /// 是否有中文
+    /// - Returns: description
+    func isIncludeChinese() -> Bool {
+        for ch in self.unicodeScalars {
+            if (0x4e00 < ch.value  && ch.value < 0x9fff) { return true } // 中文字符范围：0x4e00 ~ 0x9fff
+        }
+        return false
+    }
+    
+    
+    /// 转到到拼音
+    /// - Parameter hasBlank: hasBlank description
+    /// - Returns: description
+    func transformToPinyin(hasBlank: Bool = false) -> String {
+        let stringRef = NSMutableString(string: self) as CFMutableString
+        CFStringTransform(stringRef,nil, kCFStringTransformToLatin, false) // 转换为带音标的拼音
+        CFStringTransform(stringRef, nil, kCFStringTransformStripCombiningMarks, false) // 去掉音标
+        let pinyin = stringRef as String
+        return hasBlank ? pinyin : pinyin.replacingOccurrences(of: " ", with: "")
+    }
+    
+    /// 获取中文首字母
+    ///
+    /// - Parameter lowercased: 是否小写（默认大写）
+    func transformToPinyinHead(lowercased: Bool = false) -> String {
+        let pinyin = self.transformToPinyin(hasBlank: true).capitalized // 字符串转换为首字母大写
+        var headPinyinStr = ""
+        for ch in pinyin {
+            if ch <= "Z" && ch >= "A" {
+                headPinyinStr.append(ch) // 获取所有大写字母
+            }
+        }
+        return lowercased ? headPinyinStr.lowercased() : headPinyinStr
+    }
+}
+
+public extension Array {
+    /// 数组内中文按拼音字母排序
+    ///
+    /// - Parameter ascending: 是否升序（默认升序）
+    func sortedByPinyin(ascending: Bool = true) -> Array<String>? {
+        if self is Array<String> {
+            return (self as! Array<String>).sorted { (value1, value2) -> Bool in
+                let pinyin1 = value1.transformToPinyin()
+                let pinyin2 = value2.transformToPinyin()
+                return pinyin1.compare(pinyin2) == (ascending ? .orderedAscending : .orderedDescending)
+            }
+        }
+        return nil
+    }
+}
+
+
 public extension String {
     func zy_widthForComment(fontSize: CGFloat, height: CGFloat = 15) -> CGFloat {
         let font = UIFont.systemFont(ofSize: fontSize)
