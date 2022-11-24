@@ -53,6 +53,16 @@ TODO: ZYZKit Common tool
     sp.dependency  'ZYZKit/Common'
     sp.frameworks = 'PDFKit'
   end
+  
+  
+  s.subspec 'Helper' do |sp|
+    sp.ios.deployment_target = '14.0'
+    
+    sp.source_files = 'ZYZKit/Classes/Helper/**/*'
+    sp.dependency  'ZYZKit/Common'
+    sp.dependency  'TLPhotoPicker'
+    sp.frameworks = 'Photos'
+  end
 
  
   

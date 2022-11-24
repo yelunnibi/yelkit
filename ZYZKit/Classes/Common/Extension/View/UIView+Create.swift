@@ -15,12 +15,32 @@ public extension UIViewController {
         let gene =  UIImpactFeedbackGenerator(style: .light)
         gene.impactOccurred()
     }
+    
+    func feedbackMedium() {
+        let gene =  UIImpactFeedbackGenerator(style: .medium)
+        gene.impactOccurred()
+    }
+    
+    func feedbackHeavy() {
+        let gene =  UIImpactFeedbackGenerator(style: .heavy)
+        gene.impactOccurred()
+    }
 }
 
 public extension UIView {
     /// 触动 反馈
     func feedback() {
         let gene =  UIImpactFeedbackGenerator(style: .light)
+        gene.impactOccurred()
+    }
+    
+    func feedbackMedium() {
+        let gene =  UIImpactFeedbackGenerator(style: .medium)
+        gene.impactOccurred()
+    }
+    
+    func feedbackHeavy() {
+        let gene =  UIImpactFeedbackGenerator(style: .heavy)
         gene.impactOccurred()
     }
 }

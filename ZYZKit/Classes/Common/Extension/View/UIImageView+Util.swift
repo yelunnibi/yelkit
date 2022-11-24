@@ -24,6 +24,19 @@ public extension UIImageView {
     }
 }
 
+public extension UIView {
+    /// 添加蒙层
+    /// - Parameter targetImageView: targetImageView description
+    func makeBlur(){
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        self.backgroundColor = .clear
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        self.addSubview(blurEffectView)
+    }
+}
+
 public extension UIImageView {
     /// 获取imageview 里面 aspectfit  image 的实际 frame
     var imageRealRect: CGRect {
