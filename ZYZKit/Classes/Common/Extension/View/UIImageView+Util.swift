@@ -33,7 +33,7 @@ public extension UIView {
         blurEffectView.frame = self.bounds
         self.backgroundColor = .clear
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        self.addSubview(blurEffectView)
+        self.insertSubview(blurEffectView, at: 0)
     }
 }
 

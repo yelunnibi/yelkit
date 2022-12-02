@@ -28,8 +28,9 @@ TODO: ZYZKit Common tool
   s.source           = { :git => 'https://github.com/githubdelegate/ZYZKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
-  s.platform = :ios
+#  s.platform = :ios
   s.ios.deployment_target = '14.0'
+  s.osx.deployment_target = '10.8'
   
   s.swift_version = '5.0'
 
@@ -39,7 +40,7 @@ TODO: ZYZKit Common tool
       spc.ios.deployment_target = '14.0'
       
       spc.source_files = 'ZYZKit/Classes/Common/**/*'
-      spc.dependency 'AFNetworking', '~> 2.3'
+      spc.dependency 'Alamofire'
       spc.dependency 'MBProgressHUD', '~> 1.2.0'
   end
   

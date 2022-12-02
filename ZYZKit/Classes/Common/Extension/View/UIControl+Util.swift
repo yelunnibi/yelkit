@@ -11,7 +11,7 @@ import UIKit
 
 private var edgeKey = "edgeKey"
 
-extension UIControl {
+public extension UIControl {
     
     private var zl_insets: UIEdgeInsets? {
         get {

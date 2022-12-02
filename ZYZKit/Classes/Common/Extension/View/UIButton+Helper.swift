@@ -8,7 +8,33 @@
 import Foundation
 import UIKit
 
+//
+//public extension UIButton {
+//    static var expandKey = "zyzexpandKey"
+//    func zyz_expandSize(width: CGFloat = 0, height: CGFloat = 0) {
+//        objc_setAssociatedObject(self, &UIButton.expandKey, CGSize(width: width, height: height), objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
+//    }
+//    
+//    private func expandedRect() -> CGRect {
+//        guard let size = objc_getAssociatedObject(self, &UIButton.expandKey) as? CGSize else {
+//            return bounds
+//        }
+//        return CGRect(x: bounds.origin.x - (size.width), y: bounds.origin.y - size.height, width: bounds.size.width + size.width * 2, height: bounds.size.height + size.height * 2)
+//    }
+//    
+//    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//        let r = expandedRect()
+//        if r.equalTo(bounds) {
+//            return super.point(inside: point, with: event)
+//        } else {
+//            return r.contains(point)
+//        }
+//    }
+//}
+
 extension UIButton {
+    
+    
   func alignImageAndTitleVertically(padding: CGFloat = 4.0) {
         self.sizeToFit()
     

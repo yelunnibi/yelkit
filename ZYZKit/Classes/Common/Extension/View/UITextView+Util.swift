@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 
 extension UITextField{
@@ -40,6 +41,19 @@ extension UITextField{
            self.resignFirstResponder()
        }
    }
+
+
+public extension UITextView {
+
+    var textPublisher: AnyPublisher<String, Never> {
+        NotificationCenter.default.publisher(
+            for: UITextView.textDidChangeNotification,
+            object: self
+        )
+        .compactMap { ($0.object as? UITextView)?.text }
+        .eraseToAnyPublisher()
+    }
+}
 
 /// textview 实现returnbtn 点击
 extension UITextView: UITextViewDelegate {
