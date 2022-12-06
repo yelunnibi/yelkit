@@ -87,6 +87,7 @@ extension MBProgressHUD {
         hud.isUserInteractionEnabled = false
         hud.mode = .text
         hud.label.text = message
+        hud.label.numberOfLines = 0
 //        hud.offset = CGPoint(x: 0.0, y: MBProgressMaxOffset - 49)
         hud.hide(animated: true, afterDelay: 1.5)
     }
