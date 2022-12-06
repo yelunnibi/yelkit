@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
+    
     func addAlert(msg: String,sure: @escaping () -> Void) {
         let avc = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
         avc.addAction(UIAlertAction(title: "ac_sure_str".local , style: .default, handler: { (a) in
@@ -35,6 +36,14 @@ public extension UIViewController {
         self.present(avc, animated: true, completion: nil)
     }
     
+    func addSureAlert(title: String, msg: String,sure: @escaping () -> Void) {
+        let avc = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        avc.addAction(UIAlertAction(title: "ac_sure_str".local , style: .default, handler: { (a) in
+            sure()
+        }))
+        self.present(avc, animated: true, completion: nil)
+    }
+    
     func addAlert(title: String, msg: String, sureTitle: String =  "ac_sure_str".local, cancelTitle: String = "ac_cancel_str".local , sure: @escaping () -> Void, cancel: (() -> Void)?) {
         let avc = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         avc.addAction(UIAlertAction(title: sureTitle , style: .default, handler: { (a) in
@@ -48,6 +57,8 @@ public extension UIViewController {
         }))
         self.present(avc, animated: true, completion: nil)
     }
+    
+    
     
     
     func addActionSheet(title:String? = nil, message: String? = "", actions: [String],sure: @escaping (_ idx: Int) -> Void) {

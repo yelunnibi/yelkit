@@ -84,6 +84,31 @@ public class PDFDocPrivacyTool {
             }
         }
     }
+    
+    public class func fetchPhotoPrivacy() async -> Bool {
+      return await  withCheckedContinuation { con in
+          let s = PHPhotoLibrary.authorizationStatus()
+          switch s {
+          case .notDetermined:
+              PHPhotoLibrary.requestAuthorization { _ in
+                  DispatchQueue.main.async {
+                      con.resume(returning: PHPhotoLibrary.authorizationStatus() == .authorized)
+                  }
+              }
+          case .authorized:
+              DispatchQueue.main.async {
+//                  completion(true)
+                  con.resume(returning: true)
+              }
+          default:
+              DispatchQueue.main.async {
+//                  completion(false)
+                  con.resume(returning: false)
+              }
+          }
+        }
+   
+    }
 
 //    public class func fetchContactPrivacy(completion: @escaping (_ status: Bool) -> Void) {
 //        let s = CNContactStore.authorizationStatus(for: .contacts)
