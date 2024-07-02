@@ -75,6 +75,7 @@ public extension Date {
      */
     static func dateConvertString(date:Date, dateFormat:String="yyyy-MM-dd HH:mm:ss") -> String {
         let formatter = DateFormatter()
+        formatter.timeZone = NSTimeZone.system
         formatter.dateFormat = dateFormat
         return formatter.string(from: date)
         
@@ -86,11 +87,21 @@ public extension Date {
     ///   - string: 日期字符串
     ///   - dateFormat: 格式化样式，默认为“yyyy-MM-dd HH:mm:ss”
     /// - Returns: Date类型
-    static func stringConvertDate(string:String, dateFormat:String="yyyy-MM-dd HH:mm:ss") -> Date {
+    static func stringConvertDate(string:String, dateFormat:String="yyyy-MM-dd HH:mm:ss") -> Date? {
         let dateFormatter = DateFormatter.init()
+        dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let date = dateFormatter.date(from: string)
-        return date!
+        print(" string -> date = \(string)-date =\(date)")
+        return date
+    }
+    
+    static var currentSystemTime: Date {
+        let today = Date()
+        let zone = NSTimeZone.system
+        let interval = zone.secondsFromGMT()
+        let now = today.addingTimeInterval(TimeInterval(interval))
+        return now
     }
     
     //时间戳转成字符串
